@@ -1,18 +1,22 @@
 var money = prompt('Введите ваш бюджет на месяц', '1000'); // Перед промпт нужно поставить + позже.
 var time = prompt('Введите дату в формате YYYY-MM-DD', '1994-03-11'); // +prompt
-var answer1 = prompt("Введите стать расходов", "");
-var answer2 = +prompt("Сколько на ширку?", "");
-var answer3 = prompt("Введите статью расходов" , "");
-var answer4 = +prompt("Сколько на уборку?", "");
 var appData = {};
 appData.budget = +money;
 appData.timeData = time;
 appData.optionalExpenses = {};
 appData.income = [];
 appData.savings = false;
-appData.expenses= {
-    [answer1] : +answer2,
-    [answer3] : +answer4
-};
-alert(+appData.budget / 30);
+appData.expenses= {};
+for (var i = 0; i < 2; i++) {
+    var a = prompt("Введите статью расходов", "");
+    var b = +prompt("Сколько вы потратите на это?", "");
+if (typeof(a) !== null && typeof(b) !== null && a != '' && b != '') {
+    console.log('vse ok');
+    appData.expenses[a] = b;
+} else {
+    i = 0;
+}
+}
+appData.moneyPerDay = +appData.budget / 30;
+alert();
 console.log (appData);
